@@ -1,0 +1,46 @@
+Npm install
+  - express (start the server for api if required)
+  - //cors (for cross browser requests)
+  - webpack
+  - react
+  - babel
+  - babel-preset-es2015
+  - babel-preset-react
+  - babel-core
+  - babel-loader
+  - flux
+  - merge
+  - mongoose
+
+Bower install
+  - axios
+  - react
+
+Touch .babelrc
+  {
+  "presets" : ["es2015", "react"]
+  }
+
+webpack.config.js
+ - require webpack
+ - require path
+ - instantiate a build path with path.resolve(__dirname, 'path to the build')
+ - instantiate a js build path with path.resolve(__dirname, 'path to the js build')
+ - create a config object which has the following properties
+  - entry
+    - should have js build path + "/" + the single file for collection of all jsx files
+  - output (object)
+    - path
+      - build path
+    - filename
+      - the bundled javascript code to be named
+  - module (object)
+    - loaders (array)
+      - (empty object)
+        - test (look for all jsx files using regex )
+          - /\.jsx?/
+        - include
+          - js build path
+        - loader
+          - 'babel'
+  - export the config object
