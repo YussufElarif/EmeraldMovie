@@ -1,14 +1,28 @@
 var React = require("react");
 var Link = require("react-router").Link;
+var AppDispatcher = require("../../dispatchers/app")
+var ACTION_CONSTANT = require("../../constants/action");
+var UserStore = require("../../stores/users");
 
 var Navigation = React.createClass({
+  componentDidMount: function(){
+    UserStore.on("logout", this.handleAction);
+    UserStore.on("login", this.handleAction);
+  },
   getInitialState: function(){
     return {
-      isLoggedIn: false
+      user: UserStore.getUserDetails()
     }
   },
-  handleNavigation: function(){
-
+  handleLogout: function(){
+    AppDispatcher.dispatch({
+      action: ACTION_CONSTANT.USER.LOGOUT
+    });
+  },
+  handleAction: function(){
+    this.setState({
+      user: UserStore.getUserDetails()
+    });
   },
   render: function(){
     return (
@@ -17,7 +31,7 @@ var Navigation = React.createClass({
         <li><Link to="/movie">Movie</Link></li>
         <li><Link to="/tv">TV</Link></li>
         {
-          (this.state.isLoggedIn) ? (
+          (this.state.user) ? (
             <li><a className="waves-effect waves-light btn cyan darken-4" onClick={this.handleLogout}>Logout</a></li>
           ) : (
             <span>

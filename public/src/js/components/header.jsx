@@ -10,14 +10,19 @@ var Header = React.createClass({
     });
   },
   render: function(){
+    //Add drop down list
+    //show favourite shows and movies
+    //set login expiry date
+    //get api from movie database
+    
     return (
       <header className="navbar-fixed">
         <div className="row">
           <nav className="nav-wrapper  blue-grey darken-4">
             <div className="col s12">
               <Link to="/" className="brand-logo">
-                <img className="logo" src="http://market.designmodo.com/wp-content/uploads/2015/06/flat-ui-logo.png"/>
                 <span>Emerald</span>
+                <img className="logo" src="http://market.designmodo.com/wp-content/uploads/2015/06/flat-ui-logo.png"/>
               </Link>
               <a href="#" data-activates="navigation" className="button-collapse"><i className="material-icons">menu</i></a>
 

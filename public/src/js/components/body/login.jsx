@@ -1,19 +1,19 @@
 var React = require("react");
 var AppDispatcher = require("../../dispatchers/app");
 var ACTION_CONSTANT = require("../../constants/action");
-var User = require("../../stores/users");
+var UserStore = require("../../stores/users");
 
 var Login = React.createClass({
   getInitialState: function(){
     return {
-      user: "",
+      username: "",
       password: ""
     }
   },
   handleChange: function(e){
     console.log(e.target)
     this.setState(
-      (e.target.name === "user") ? {user: e.target.value} : {password: e.target.value}
+      (e.target.name === "username") ? {username: e.target.value} : {password: e.target.value}
     );
   },
   handleSubmit: function(e){
@@ -27,8 +27,8 @@ var Login = React.createClass({
   render: function(){
     return (
       <form className="container login-register" onSubmit={this.handleSubmit}>
-        <label htmlFor="user">Username</label>
-        <input name="user" type="text" placeholder="username" onChange={this.handleChange}/>
+        <label htmlFor="username">Username</label>
+        <input name="username" type="text" placeholder="username" onChange={this.handleChange}/>
 
         <label htmlFor="password">Password</label>
         <input name="password" type="password" placeholder="password" onChange={this.handleChange}/>

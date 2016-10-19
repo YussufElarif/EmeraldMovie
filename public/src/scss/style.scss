@@ -1,11 +1,20 @@
 //https://coolors.co/00aac2-4b5354-5bebff-ffffff-374e51
 $index: 999;
+
 header {
   z-index:$index;
   .logo {
     height: 44px;
-    margin-top:10px;
-    margin-right:10px;
+    top:10px;
+    left:29px;
+    position:absolute;
+    z-index:1;
+  }
+  .brand-logo {
+    span{
+      position:relative;
+      z-index:2;
+    }
   }
 }
 
