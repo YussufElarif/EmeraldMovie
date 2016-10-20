@@ -15,10 +15,12 @@ var Login = require("./components/body/login.jsx");
 var Register = require("./components/body/register.jsx");
 var Home = require("./components/body/home.jsx");
 
-var MovieList = require("./components/body/movieList.jsx");
-var TVList = require("./components/body/tvList.jsx");
+var List = require("./components/body/categories.jsx");
+var MovieList = require("./components/body/categories/movieList.jsx");
+var TVList = require("./components/body/categories/tvList.jsx");
 
 var Product = require("./components/body/production.jsx");
+var Detail = require("./components/body/production/detail.jsx");
 var MovieDetail = require("./components/body/production/movieDetail.jsx");
 var TvDetail = require("./components/body/production/tvDetail.jsx");
 
@@ -33,15 +35,14 @@ ReactDOM.render(
       <Route path="login" component={Login}/>
       <Route path="register" component={Register}/>
 
-      <Route path="movie" component={MovieList}/>
-      <Route path="tv" component={TVList}/>
-
       <Route path="movie" component={Product}>
-        <Route path=":id" component={MovieDetail}/>
+        <IndexRoute component={MovieList}/>
+        <Route path=":id" component={Detail}/>
       </Route>
 
       <Route path="tv" component={Product}>
-        <Route path=":id" component={TvDetail}/>
+        <IndexRoute component={TVList}/>
+        <Route path=":id" component={Detail}/>
       </Route>
 
     </Route>

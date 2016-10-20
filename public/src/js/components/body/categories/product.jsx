@@ -8,7 +8,7 @@ var Movie = React.createClass({
   render: function(){
     return (
       <Link className="product col s2" to={"/" + this.props.type + "/" + this.props.id}>
-        <div className="image" style={{backgroundImage: "url(" + this.props.image + ")"}}>
+        <div className="image" style={{backgroundImage: "url(http://image.tmdb.org/t/p/w500" + this.props.image + ")"}}>
           <div className="rating">Rating:
             <span><i className="material-icons">star</i>{this.props.rating}/10</span>
           </div>

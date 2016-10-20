@@ -1,10 +1,10 @@
 var merge = require("merge");
+var axios = require("axios");
 var EventEmitter = require("events").EventEmitter;
 var AppDispatcher = require("../dispatchers/app");
 var ACTION_CONSTANT = require("../constants/action");
 var browserHistory = require("react-router").browserHistory;
 
-var axios = require("axios");
 
 var MovieList = merge(EventEmitter.prototype, {
   getUserDetails: function(){
@@ -31,6 +31,7 @@ var MovieList = merge(EventEmitter.prototype, {
     //
     // });
     localStorage.removeItem("user");
+    localStorage.removeItem("token");
   },
   register: function(data){
     var self = this;

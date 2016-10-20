@@ -1,22 +1,10 @@
 var merge = require("merge");
+var axios = require("axios");
 var EventEmitter = require("events").EventEmitter;
 var AppDispatcher = require("../dispatchers/app");
 var ACTION_CONSTANT = require("../constants/action");
 
-var _tv = [{
-    id: "0",
-    title: "Title of a Show",
-    desc: "Description of a Show",
-    image: "https://www.wired.com/wp-content/uploads/2014/06/Breaking-Bad-Heisenberg.jpg",
-    rating: 8
-  },
-  {
-    id: "1",
-    title: "Title 2 of a Show",
-    desc: "Description 2 of a Show",
-    image: "http://utbgeek.com/home/bradu25/public_html/utbgeek/wp-content/uploads/2016/07/Vikings.jpg",
-    rating: 2
-  }];
+var _tv = [];
 
 var TvList = merge(EventEmitter.prototype, {
   getAllTvs: function(){
@@ -34,8 +22,21 @@ var TvList = merge(EventEmitter.prototype, {
 
 module.exports = TvList;
 
-// AppDispatcher.register(handleAction);
-//
-// function handleAction(payload){
-//   console.log("handleAction tv");
-// }
+AppDispatcher.register(handleAction);
+
+function handleAction(payload){
+  if (ACTION_CONSTANT.TV.LOAD.ALL === payload.action){
+    getAllTvs();
+  }
+}
+
+function getAllTvs(){
+  axios.get("/api/tv").then(function(res){
+    console.log(res);
+    _tv = res.data.results;
+    TvList.emit(ACTION_CONSTANT.TV.LOAD.ALL + "UPDATED");
+  })
+  .catch(function(err){
+    console.log(err);
+  });
+}

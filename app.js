@@ -13,7 +13,7 @@ var bodyParser = require('body-parser');
 
 var routes = require("./routes/routes");
 var session = require('express-session');
-
+console.log(process.env)
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
