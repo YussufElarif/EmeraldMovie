@@ -9,8 +9,8 @@ module.exports = {
       ALL: "MOVIE LOAD ALL",
       ONE: "MOVIE LOAD ONE"
     },
-    SAVE: {
-      ONE: "MOVIE SAVE ONE"
+    FAVOURITE: {
+      ONE: "MOVIE FAVOURITE ONE"
     },
     DELETE: {
       ONE: "MOVIE DELETE ONE"
@@ -21,11 +21,20 @@ module.exports = {
       ALL: "TV LOAD ALL",
       ONE: "TV LOAD ONE"
     },
-    SAVE: {
-      ONE: "TV SAVE ONE"
+    FAVOURITE: {
+      ONE: "TV FAVOURITE ONE"
     },
     DELETE: {
       ONE: "TV DELETE ONE"
+    }
+  },
+  FAVOURITE: {
+    LOAD: {
+      ALL: "FAVOURITE LOAD ALL",
+      ONE: "FAVOURITE LOAD ONE"
+    },
+    DELETE: {
+      ONE: "FAVOURITE DELETE ONE"
     }
   }
 }

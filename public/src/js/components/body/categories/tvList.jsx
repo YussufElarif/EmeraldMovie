@@ -15,7 +15,7 @@ var TvList = React.createClass({
   },
   getInitialState: function(){
     return {
-      tvs: TvStore.getAllTvs(),
+      tvs: false,
       loading: true
     }
   },
@@ -26,19 +26,24 @@ var TvList = React.createClass({
     });
   },
   render: function(){
-    return (
-      <div className="productList row">
-        <h1>list from tv</h1>
-        <Loading value={this.state.loading}/>
-        {
-          this.state.tvs.map(function(product, i){
-            return (
-                <Tv type="tv" id={product.id} image={product.poster_path} title={product.original_name} rating={product.vote_average} key={i}/>
-            )
-        }.bind(this))
-      }
-      </div>
-    )
+    if (this.state.tvs){
+      return (
+        <div className="productList row">
+          <h1>list from tv</h1>
+          {
+            this.state.tvs.map(function(product, i){
+              return (
+                  <Tv type="tv" width="s2" id={product.id} image={product.poster_path} title={product.original_name} rating={product.vote_average} key={i}/>
+              )
+            })
+          }
+        </div>
+      )
+    } else {
+      return (
+        <Loading/>
+      )
+    }
   }
 });
 

@@ -23,20 +23,24 @@ var Navigation = React.createClass({
     this.setState({
       user: UserStore.getUserDetails()
     });
+    $(".button-collapse").sideNav("hide");
+  },
+  handleClick: function(){
+    $(".button-collapse").sideNav("hide");
   },
   render: function(){
     return (
       <div>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/movie">Movie</Link></li>
-        <li><Link to="/tv">TV</Link></li>
+        <li><Link to="/" onClick={this.handleClick}>Home</Link></li>
+        <li><Link to="/movie" onClick={this.handleClick}>Movie</Link></li>
+        <li><Link to="/tv" onClick={this.handleClick}>TV</Link></li>
         {
           (this.state.user) ? (
             <li><a className="waves-effect waves-light btn cyan darken-4" onClick={this.handleLogout}>Logout</a></li>
           ) : (
             <span>
-              <li><Link className="waves-effect waves-light btn cyan darken-4" to="/login">Login</Link></li>
-              <li><Link className="waves-effect waves-light btn cyan darken-4" to="/register">Register</Link></li>
+              <li><Link className="waves-effect waves-light btn cyan darken-4" to="/login" onClick={this.handleClick}>Login</Link></li>
+              <li><Link className="waves-effect waves-light btn cyan darken-4" to="/register" onClick={this.handleClick}>Register</Link></li>
             </span>
           )
         }

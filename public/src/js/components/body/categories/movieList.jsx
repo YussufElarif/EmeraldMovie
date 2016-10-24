@@ -14,30 +14,39 @@ var MovieList = React.createClass({
   },
   getInitialState: function(){
     return {
-      movies: MovieStore.getAllMovies(),
+      movies: false,
       loading: true
     }
   },
   handleAction: function(){
+    //unlisten?
     this.setState({
       movies: MovieStore.getAllMovies(),
       loading: false
     });
   },
+  scrollIntoView: function(){
+    console.log("into view");
+  },
   render: function(){
-    return (
-      <div className="productList row">
-        <h1>list from movie</h1>
-        <Loading value={this.state.loading}/>
-        {
-          this.state.movies.map(function(product, i){
-            return (
-                <Movie type="movie" id={product.id} image={product.poster_path} title={product.original_title} rating={product.vote_average} key={i}/>
-            )
-        })
-      }
-      </div>
-    )
+    if (this.state.movies){
+      return (
+        <div className="productList row">
+          <h1>list from movie</h1>
+          {
+            this.state.movies.map(function(product, i){
+              return (
+                  <Movie type="movie" width="s2" id={product.id} image={product.poster_path} title={product.original_title} rating={product.vote_average} key={i}/>
+              )
+          })
+        }
+        </div>
+      )
+    } else {
+      return (
+        <Loading/>
+      )
+    }
   }
 });
 

@@ -11,6 +11,7 @@ var register = require("./controllers/api/register");
 
 var movie = require("./controllers/api/movie");
 var tv = require("./controllers/api/tv");
+var favourite = require("./controllers/api/favourite");
 
 //Api for loginm registration and logging out
 router.route("/api/login")
@@ -35,6 +36,14 @@ router.route("/api/tv")
 
 router.route("/api/tv/:id")
       .get(tv.show);
+
+//Api for Favourite
+router.route("/api/favourite")
+      .post(favourite.create);
+
+router.route("/api/favourite/:id")
+      .get(favourite.show)
+      .delete(favourite.delete);
 
 //Route for the client side application routing
 router.route('*')

@@ -4,19 +4,17 @@ var EventEmitter = require("events").EventEmitter;
 var AppDispatcher = require("../dispatchers/app");
 var ACTION_CONSTANT = require("../constants/action");
 
-var _movie = [];
+var _movies = [];
+var _movie = {};
 
 var MovieList = merge(EventEmitter.prototype, {
   getAllMovies: function(){
-    return _movie;
+    return _movies;
     //return _movie;
   },
-  getMovieById: function(i){
+  getMovieById: function(){
     console.log("get movie by id");
-    for (var i = 0; i < _movie.length; i++){
-
-    }
-    return _movie[i]
+    return _movie
   },
   getMovieByGenre: function(genre){
       console.log("get movie by genre");
@@ -30,16 +28,27 @@ AppDispatcher.register(handleAction);
 function handleAction(payload){
   if (ACTION_CONSTANT.MOVIE.LOAD.ALL === payload.action){
     getAllMovies();
+  } else if (ACTION_CONSTANT.MOVIE.LOAD.ONE === payload.action) {
+    getMovieById(payload.id);
   }
 }
 
 function getAllMovies(){
   axios.get("/api/movie").then(function(res){
     console.log(res);
-    _movie = res.data.results;
+    _movies = res.data.results;
     MovieList.emit(ACTION_CONSTANT.MOVIE.LOAD.ALL + "UPDATED");
   })
   .catch(function(err){
     console.log(err);
   });
+}
+
+function getMovieById(id){
+  console.log(id);
+  axios.get("/api/movie/" + id).then(function(res){
+    console.log("result ", res);
+    _movie = res.data;
+    MovieList.emit(ACTION_CONSTANT.MOVIE.LOAD.ONE + "UPDATED");
+  })
 }

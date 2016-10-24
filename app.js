@@ -13,7 +13,7 @@ var bodyParser = require('body-parser');
 
 var routes = require("./routes/routes");
 var session = require('express-session');
-console.log(process.env)
+// console.log(process.env)
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -26,6 +26,9 @@ app.use(session({
 mongoose.connect(process.env.MONGO_URL + "emerald");
 
 app.use(express.static(__dirname + '/public'));
+app.use('jquery', express.static(__dirname + '/public/node_modules/jquery/dist/'));
+app.use('materialize', express.static(__dirname + '/public/node_modules/materialize-css/dist/'));
+
 
 app.use(routes);
 

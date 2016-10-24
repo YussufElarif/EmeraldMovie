@@ -120,6 +120,48 @@ main {
       position:absolute;
       top:-150px;
     }
+    a.favourite {
+      text-align:center;
+      width:100%;
+      margin:10px 0;
+    }
+  }
+
+  article.detail.col.s8 {
+      margin-left:10px;
+  }
+  section.actors {
+    padding:20px !important;
+    margin-top:50px;
+    color:white;
+    width:100%;
+    text-align: center;
+    > div{
+      > div {
+        width:110px;
+        display:inline-block;
+        margin:20px;
+        div.actor-profile {
+          display:inline-block;
+          background-position:center;
+          background-size:cover;
+          background-repeat:no-repeat;
+          width:100px;
+          height:100px;
+          border-radius:100px;
+        }
+        p {
+          margin:3px 0;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+
+  .container.content{
+    height:100%;
   }
 }
 

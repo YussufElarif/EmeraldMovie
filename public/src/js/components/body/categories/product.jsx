@@ -2,12 +2,21 @@ var React = require("react");
 var Link = require("react-router").Link;
 
 var Movie = React.createClass({
+  componentDidMount:function(){
+
+  },
+  getInitialState: function(){
+    return {
+      favourite: false,
+      loading: false
+    }
+  },
   handleClick: function(){
     console.log(this.props);
   },
   render: function(){
     return (
-      <Link className="product col s2" to={"/" + this.props.type + "/" + this.props.id}>
+      <Link className={"product col " + this.props.width} to={"/" + this.props.type + "/" + this.props.id}>
         <div className="image" style={{backgroundImage: "url(http://image.tmdb.org/t/p/w500" + this.props.image + ")"}}>
           <div className="rating">Rating:
             <span><i className="material-icons">star</i>{this.props.rating}/10</span>

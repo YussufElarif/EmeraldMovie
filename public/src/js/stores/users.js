@@ -32,7 +32,7 @@ var MovieList = merge(EventEmitter.prototype, {
     // });
     localStorage.removeItem("user");
     localStorage.removeItem("token");
-  },
+},
   register: function(data){
     var self = this;
     return axios.post("/api/register", data)

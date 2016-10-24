@@ -14,7 +14,7 @@ var Header = React.createClass({
     //show favourite shows and movies
     //set login expiry date
     //get api from movie database
-    
+
     return (
       <header className="navbar-fixed">
         <div className="row">
@@ -31,7 +31,7 @@ var Header = React.createClass({
               </ul>
 
               <ul className="side-nav center" id="navigation">
-                <Navigation/>
+                <Navigation nav={true}/>
               </ul>
             </div>
           </nav>
